@@ -22,6 +22,18 @@ let alt r1 r2 succ =
   n.eps <- [r1 succ; r2 succ];
   n
 
+let diff r1 r2 =
+  let cset r =
+    match r (new_node ()) with
+    | { eps = []; trans = [cset, _] } -> cset
+    | _ -> raise Not_found
+  in
+  let c1, c2 = cset r1, cset r2 in
+  fun succ ->
+    let n = new_node () in
+    n.trans <- [Cset.difference c1 c2, succ];
+    n
+
 let rep r succ =
   let n = new_node () in
   n.eps <- [r n; succ];

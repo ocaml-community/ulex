@@ -3,6 +3,7 @@ type regexp
 val chars: Cset.t -> regexp
 val seq: regexp -> regexp -> regexp
 val alt: regexp -> regexp -> regexp
+val diff: regexp -> regexp -> regexp
 val rep: regexp -> regexp
 val plus: regexp -> regexp
 val eps: regexp

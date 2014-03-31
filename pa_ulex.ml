@@ -213,6 +213,11 @@ EXTEND Gram
  regexp: [
    [ r1 = regexp; "|"; r2 = regexp -> Ulex.alt r1 r2 ]
  | [ r1 = regexp; r2 = regexp -> Ulex.seq r1 r2 ]
+ | [ r1 = regexp; "#"; r2 = regexp ->
+       try  Ulex.diff r1 r2
+       with Not_found ->
+         failwith
+           ("pa_ulex (error): operands of # must be bare character sets") ]
  | [ r = regexp; "*" -> Ulex.rep r
    | r = regexp; "+" -> Ulex.plus r
    | r = regexp; "?" -> Ulex.alt Ulex.eps r
