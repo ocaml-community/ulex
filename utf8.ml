@@ -89,7 +89,7 @@ let rec blit_to_int s spos a apos n =
 
 let to_int_array s pos bytes =
   let n = compute_len s pos bytes in
-  let a = Array.create n 0 in
+  let a = Array.make n 0 in
   blit_to_int s pos a 0 n;
   a
 
@@ -110,7 +110,7 @@ let store b p =
     Buffer.add_char b (Char.chr (0x80 lor (p land 0x3f)))
   )
   else if p <= 0xffff then (
-    if (p >= 0xd800 & p < 0xe000) then raise MalFormed;
+    if (p >= 0xd800 && p < 0xe000) then raise MalFormed;
     Buffer.add_char b (Char.chr (0xe0 lor (p lsr 12)));
     Buffer.add_char b (Char.chr (0x80 lor ((p lsr 6) land 0x3f)));
     Buffer.add_char b (Char.chr (0x80 lor (p land 0x3f)))

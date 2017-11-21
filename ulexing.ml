@@ -42,7 +42,7 @@ let empty_lexbuf = {
 let create f = {
   empty_lexbuf with
     refill = f;
-    buf = Array.create chunk_size 0;
+    buf = Array.make chunk_size 0;
 }
 
 let from_stream s =
@@ -120,7 +120,7 @@ let refill lexbuf =
       Array.blit lexbuf.buf s lexbuf.buf 0 ls
     else begin
       let newlen = (Array.length lexbuf.buf + chunk_size) * 2 in
-      let newbuf = Array.create newlen 0 in
+      let newbuf = Array.make newlen 0 in
       Array.blit lexbuf.buf s newbuf 0 ls;
       lexbuf.buf <- newbuf
     end;
@@ -187,9 +187,11 @@ let latin1_lexeme_char lexbuf pos =
   to_latin1 (lexeme_char lexbuf pos)
 
 let latin1_sub_lexeme lexbuf pos len =
-  let s = String.create len in
-  for i = 0 to len - 1 do s.[i] <- to_latin1 lexbuf.buf.(lexbuf.start + pos + i) done;
-  s
+  let s = Bytes.create len in
+  for i = 0 to len - 1 do
+    Bytes.set s i (to_latin1 lexbuf.buf.(lexbuf.start + pos + i))
+  done;
+  Bytes.to_string s
 
 let latin1_lexeme lexbuf = 
   latin1_sub_lexeme lexbuf 0 (lexbuf.pos - lexbuf.start)
