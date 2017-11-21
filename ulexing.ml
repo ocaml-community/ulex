@@ -187,9 +187,11 @@ let latin1_lexeme_char lexbuf pos =
   to_latin1 (lexeme_char lexbuf pos)
 
 let latin1_sub_lexeme lexbuf pos len =
-  let s = String.create len in
-  for i = 0 to len - 1 do s.[i] <- to_latin1 lexbuf.buf.(lexbuf.start + pos + i) done;
-  s
+  let s = Bytes.create len in
+  for i = 0 to len - 1 do
+    Bytes.set s i (to_latin1 lexbuf.buf.(lexbuf.start + pos + i))
+  done;
+  Bytes.to_string s
 
 let latin1_lexeme lexbuf = 
   latin1_sub_lexeme lexbuf 0 (lexbuf.pos - lexbuf.start)
