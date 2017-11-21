@@ -57,7 +57,7 @@ let decision_table l =
   match (aux max_int [] l : int * 'a list * 'b list) with
     | _,[], _ -> decision l
     | min,((_,max,_)::_ as l1), l2 ->
-	let arr = Array.create (max-min+1) 0 in
+	let arr = Array.make (max-min+1) 0 in
 	List.iter (fun (a,b,i) -> for j = a to b do arr.(j-min) <- i + 1 done) l1;
 	Lte (min-1, Return (-1), Lte (max, Table (min,arr), decision l2))
 
