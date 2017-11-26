@@ -2,6 +2,8 @@ opam-version: "1.2"
 name: "ulex"
 version: "1.2"
 maintainer: "whitequark@whitequark.org"
+authors: ["Alain.Frisch@inria.fr"]
+homepage: "https://github.com/whitequark/ulex"
 build: [
   [make]
   [make "all.opt"]
