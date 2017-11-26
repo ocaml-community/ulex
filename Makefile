@@ -37,19 +37,15 @@ custom_ulexing.byte:
 doc:
 	ocamldoc -html ulexing.mli
 
-PACKAGE = ulex-$(VERSION)
-DISTRIB = CHANGES LICENSE META README Makefile _tags *.ml *.mli
-.PHONY: package
-package: clean
-	rm -Rf $(PACKAGE)
-	mkdir $(PACKAGE)
-	cp -R $(DISTRIB) $(PACKAGE)/
-	tar czf $(PACKAGE).tar.gz $(PACKAGE)
-	rm -Rf $(PACKAGE)
+VERSION      := $$(opam query --version)
+NAME_VERSION := $$(opam query --name-version)
+ARCHIVE      := $$(opam query --archive)
 
-upload: 
-	$(MAKE) package
-	rsync -avz $(PACKAGE).tar.gz brome.pps.jussieu.fr:/home/web/wwwcduce/public_html/download
-	$(MAKE) doc
-#	rsync -avz *.html *.css cduce@di.ens.fr:public_html/ulex
-	rsync -avz CHANGES *.html *.css brome.pps.jussieu.fr:/home/web/wwwcduce/public_html/ulex
+release:
+	git tag -a v$(VERSION) -m "Version $(VERSION)."
+	git push origin v$(VERSION)
+	opam publish prepare $(NAME_VERSION) $(ARCHIVE)
+	cp -t $(NAME_VERSION) descr
+	grep -Ev '^(name|version):' opam >$(NAME_VERSION)/opam
+	opam publish submit $(NAME_VERSION)
+	rm -rf $(NAME_VERSION)
