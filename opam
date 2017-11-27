@@ -11,6 +11,7 @@ build: [
 install: [make "install"]
 remove: [["ocamlfind" "remove" "ulex"]]
 depends: [
+  "base-bytes"
   "ocamlfind"
   "camlp4"
   "ocamlbuild" {build}
