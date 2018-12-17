@@ -1,5 +1,5 @@
 ALL=pa_ulex.cma ulexing.cma
-OCAMLBUILD=ocamlbuild -byte-plugin
+OCAMLBUILD=ocamlbuild -byte-plugin -use-ocamlfind
 
 all::
 	$(OCAMLBUILD) $(ALL)
@@ -12,20 +12,20 @@ install: all
 	cd _build && $(MAKE) -f ../Makefile realinstall
 
 realinstall:
-	ocamlfind install ulex ../META $(wildcard $(MODS:=.mli) $(MODS:=.cmi) $(MODS:=.cmx) pa_ulex.cma ulexing.a ulexing.cma ulexing.cmxa)
+	ocamlfind install ulex-camlp5 ../META $(wildcard $(MODS:=.mli) $(MODS:=.cmi) $(MODS:=.cmx) pa_ulex.cma ulexing.a ulexing.cma ulexing.cmxa)
 
 uninstall:
-	ocamlfind remove ulex
+	ocamlfind remove ulex-camlp5
 
 clean:
 	$(OCAMLBUILD) -clean
 	rm -f *~ *.html *.css *.tar.gz
 
 view_test: all
-	camlp4o -printer ocaml ./_build/pa_ulex.cma test.ml
+	camlp5o pr_o.cmo ./_build/pa_ulex.cma test.ml
 
 run_test:
-	ocamlbuild test.byte
+	$(OCAMLBUILD) test.byte
 	./test.byte
 
 custom_ulexing.byte:
