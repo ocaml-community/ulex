@@ -1,7 +1,7 @@
 opam-version: "1.2"
-name: "ulex"
+name: "ulex-camlp5"
 version: "1.2"
-maintainer: "whitequark@whitequark.org"
+maintainer: "claudio.sacerdoticoen@unibo.it"
 authors: ["Alain.Frisch@inria.fr"]
 homepage: "https://github.com/whitequark/ulex"
 build: [
@@ -13,6 +13,6 @@ remove: [["ocamlfind" "remove" "ulex"]]
 depends: [
   "base-bytes"
   "ocamlfind"
-  "camlp4"
+  "camlp5"
   "ocamlbuild" {build}
 ]

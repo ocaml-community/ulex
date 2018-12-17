@@ -1,3 +1,6 @@
+-camlp5 version
+     * Backported from camlp4 to camlp5
+
 1.1
      * Generate (more) globally unique identifiers to avoid conflicts when open'ing another module
        processed by ulex (issue reported by Gerd Stolpmann)

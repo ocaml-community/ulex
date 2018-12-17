@@ -1,4 +1,4 @@
-Ulex: a OCaml lexer generator for Unicode
+Ulex-camlp5: a OCaml lexer generator for Unicode compiled with camlp5
 
 License:
   Copyright (C) 2003, 2004, 2005, 2006 Alain Frisch
@@ -10,6 +10,8 @@ Author:
 
 --------------------------------------------------------------------------
 Overview
+
+- ulex-camlp5 is a version of ulex compile with camlp5.
 
 - ulex is a lexer generator.
 
@@ -142,7 +144,7 @@ Installation:
 
 Compilation of OCaml files with lexer specifications:
 
-  ocamlfind ocamlc -c -package ulex -syntax camlp4o my_file.ml
+  ocamlfind ocamlc -c -package ulex -syntax camlp5o my_file.ml
 
 When linking, you must also include the ulex package:
   ocamlfind ocamlc -o my_prog -linkpkg -package ulex my_file.cmo
@@ -151,7 +153,7 @@ When linking, you must also include the ulex package:
 2. Without findlib
 
 You can use ulex without findlib. To compile, you need to run the source
-file through the Camlp4 syntax extension pa_ulex.cma. Moreover, you need to 
+file through the Camlp5 syntax extension pa_ulex.cma. Moreover, you need to 
 link the application with the runtime support library for ulex 
 (ulexing.cma / ulexing.cmxa).
 
