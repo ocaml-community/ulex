@@ -4,6 +4,7 @@ version: "1.2"
 maintainer: "claudio.sacerdoticoen@unibo.it"
 authors: ["Alain.Frisch@inria.fr"]
 homepage: "https://github.com/whitequark/ulex"
+description: "A OCaml lexer generator for Unicode (backported to camlp5)"
 build: [
   [make]
   [make "all.opt"]
