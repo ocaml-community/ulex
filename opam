@@ -1,19 +1,22 @@
-opam-version: "1.2"
+opam-version: "2.0"
 name: "ulex-camlp5"
 version: "1.2"
 maintainer: "claudio.sacerdoticoen@unibo.it"
 authors: ["Alain.Frisch@inria.fr"]
 homepage: "https://github.com/whitequark/ulex"
-description: "A OCaml lexer generator for Unicode (backported to camlp5)"
+dev-repo: "git+https://github.com/whitequark/ulex.git"
+bug-reports: "https://github.com/whitequark/ulex/issues"
+synopsis: "A lexer generator for Unicode (backported to camlp5)"
 build: [
   [make]
   [make "all.opt"]
 ]
 install: [make "install"]
-remove: [["ocamlfind" "remove" "ulex"]]
+remove: [["ocamlfind" "remove" "ulex-camlp5"]]
+flags: light-uninstall
 depends: [
-  "base-bytes"
-  "ocamlfind"
+  "ocaml" {>="4.02.0"} 
+  "ocamlfind" {build}
   "camlp5"
   "ocamlbuild" {build}
 ]
