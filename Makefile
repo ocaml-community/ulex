@@ -12,7 +12,8 @@ install: all
 	cd _build && $(MAKE) -f ../Makefile realinstall
 
 realinstall:
-	ocamlfind install ulex-camlp5 ../META $(wildcard $(MODS:=.mli) $(MODS:=.cmi) $(MODS:=.cmx) pa_ulex.cma ulexing.a ulexing.cma ulexing.cmxa)
+	mkdir -p $(DESTDIR)
+	ocamlfind install -destdir $(DESTDIR) ulex-camlp5 ../META $(wildcard $(MODS:=.mli) $(MODS:=.cmi) $(MODS:=.cmx) pa_ulex.cma ulexing.a ulexing.cma ulexing.cmxa)
 
 uninstall:
 	ocamlfind remove ulex-camlp5
