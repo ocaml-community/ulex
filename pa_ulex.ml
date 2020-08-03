@@ -156,7 +156,7 @@ let gen_state auto loc i (part,trans,final) =
     <:expr< match ($lid:p$ (Ulexing.next lexbuf)) 
     with [ $list:cases$ ] >> in
   let ret body =
-    [<:patt< $lid:f$ >>, <:expr< fun lexbuf -> $body$ >>] in
+    [<:patt< $lid:f$ >>, <:expr< fun lexbuf -> $body$ >>, <:vala< [] >>] in
   match best_final final with
     | None -> ret body
     | Some i -> 
