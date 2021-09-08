@@ -16,3 +16,4 @@ depends: [
   "camlp4"
   "ocamlbuild" {build}
 ]
+dev-repo: "git+https://github.com/whitequark/ulex.git"
