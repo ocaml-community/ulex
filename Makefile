@@ -1,5 +1,5 @@
 ALL=pa_ulex.cma ulexing.cma
-OCAMLBUILD=ocamlbuild -byte-plugin -use-ocamlfind
+OCAMLBUILD=ocamlbuild -byte-plugin -use-ocamlfind -package camlp-streams
 
 all::
 	$(OCAMLBUILD) $(ALL)

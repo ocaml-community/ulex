@@ -18,5 +18,6 @@ depends: [
   "ocaml" {>="4.02.0"} 
   "ocamlfind" {build}
   "camlp5" {> "7.99"}
+  "camlp-streams"
   "ocamlbuild" {build}
 ]
