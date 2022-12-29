@@ -1,5 +1,6 @@
 ALL=pa_ulex.cma ulexing.cma
 OCAMLBUILD=ocamlbuild -byte-plugin -use-ocamlfind -package camlp-streams
+DESTDIR?=`ocamlfind printconf destdir`
 
 all::
 	$(OCAMLBUILD) $(ALL)
