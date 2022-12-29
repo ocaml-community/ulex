@@ -3,6 +3,7 @@ name: "ulex-camlp5"
 version: "1.4"
 maintainer: "claudio.sacerdoticoen@unibo.it"
 authors: ["Alain.Frisch@inria.fr"]
+license: "MIT-like"
 homepage: "https://github.com/whitequark/ulex"
 dev-repo: "git+https://github.com/whitequark/ulex.git"
 bug-reports: "https://github.com/whitequark/ulex/issues"
