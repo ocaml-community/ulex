@@ -15,9 +15,9 @@ install: [make "install"]
 remove: [["ocamlfind" "remove" "ulex-camlp5"]]
 flags: light-uninstall
 depends: [
-  "ocaml" {>="4.02.0"} 
+  "ocaml" {>="5.0.0"} 
   "ocamlfind" {build}
-  "camlp5" {> "7.99"}
+  "camlp5" {>= "8.00.04"}
   "camlp-streams"
   "ocamlbuild" {build}
 ]
