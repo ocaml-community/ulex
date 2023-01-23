@@ -1,8 +1,9 @@
 opam-version: "2.0"
 name: "ulex-camlp5"
-version: "1.2"
+version: "1.3"
 maintainer: "claudio.sacerdoticoen@unibo.it"
 authors: ["Alain.Frisch@inria.fr"]
+license: "MIT"
 homepage: "https://github.com/whitequark/ulex"
 dev-repo: "git+https://github.com/whitequark/ulex.git"
 bug-reports: "https://github.com/whitequark/ulex/issues"
@@ -15,8 +16,9 @@ install: [make "install"]
 remove: [["ocamlfind" "remove" "ulex-camlp5"]]
 flags: light-uninstall
 depends: [
-  "ocaml" {>="4.02.0"} 
+  "ocaml" {>="4.14.1"} 
   "ocamlfind" {build}
-  "camlp5" {> "7.99"}
+  "camlp5" {>= "8.00.04"}
+  "camlp-streams"
   "ocamlbuild" {build}
 ]

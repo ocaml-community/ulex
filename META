@@ -1,5 +1,5 @@
 version = "1.2"
-requires = "camlp5"
+requires = "camlp-streams unix"
 description = "Runtime support for ulex"
 archive(byte) = "ulexing.cma"
 archive(native) = "ulexing.cmxa"
